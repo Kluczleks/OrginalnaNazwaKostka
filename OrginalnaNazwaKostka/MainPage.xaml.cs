@@ -15,45 +15,47 @@ namespace OrginalnaNazwaKostka
         public void OnCounterClicked(object sender, EventArgs e)
         {
 
+
+            //cos dodaje okok
+            Random r = new Random();
+            int diceRoll = 6;
             if (K4.IsChecked)
             {
-                Random rand = new Random();
-                int randomNumber = rand.Next(1, 5);
-                kostka.Text = randomNumber.ToString() + " to twój wynik";
-                    
+                diceRoll = r.Next(1, 5);
             }
-            if (K6.IsChecked) 
+            if (K6.IsChecked)
             {
-                Random rand = new Random();
-                int randomNumber = rand.Next(1, 7);
-                kostka.Text = randomNumber.ToString() + " to twój wynik";
-               
+                diceRoll = r.Next(1, 7);
             }
-            if (K10.IsChecked) 
+            if (K10.IsChecked)
             {
-                Random rand = new Random();
-                int randomNumber = rand.Next(1, 11);
-                kostka.Text = randomNumber.ToString() + " to twój wynik";
-                
+                diceRoll = r.Next(1, 11);
             }
-            if (K12.IsChecked) 
-            {   
-                Random rand = new Random();
-                int randomNumber = rand.Next(1, 13);
-                kostka.Text = randomNumber.ToString() + " to twój wynik";
-               
+            if (K12.IsChecked)
+            {
+                diceRoll = r.Next(1, 13);
             }
 
+            RollLabel.Text = "Wynik rzutu: " + diceRoll.ToString();
 
-
-
-
-            // kostka.Text = randomNumber.ToString() + " to twój wynik";
-            //SemanticScreenReader.Announce(kostka.Text);
-            // komenda taka
 
         }
+        private void CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            RadioButton rb = (RadioButton)sender;
+            int maxRoll = int.Parse((String)rb.Value);
+            string fileName = "k" + maxRoll + ".jpg";
+            pic.Source = fileName;
+        }
+
+
+
+
+        // kostka.Text = randomNumber.ToString() + " to twój wynik";
+        //SemanticScreenReader.Announce(kostka.Text);
+        // komenda taka
+
+    }
     }
 
 
-}
