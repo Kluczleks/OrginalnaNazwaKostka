@@ -1,4 +1,6 @@
-﻿namespace OrginalnaNazwaKostka
+﻿
+
+namespace OrginalnaNazwaKostka
 {
     public partial class MainPage : ContentPage
     {
@@ -9,17 +11,15 @@
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        public void OnCounterClicked(object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            Random rand = new Random();
+            int randomNumber = rand.Next(1, 6);
+            kostka.Text = randomNumber.ToString()+ " to twój wynik";
+            SemanticScreenReader.Announce(kostka.Text); 
+            // komenda taka 
         }
     }
+  
 
 }
